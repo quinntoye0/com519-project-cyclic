@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const bodyParser = require("body-parser");
 const path = require("path");
 const mongoose = require("mongoose");
 const chalk = require("chalk");
@@ -7,7 +8,7 @@ const chalk = require("chalk");
 /**
  * Controllers (route handlers).
  */
-const tasterController = require("./controllers/taster");
+const myShowController = require("./controllers/my-show");
 const tastingController = require("./controllers/tasting");
 
 const app = express();
@@ -35,6 +36,8 @@ mongoose.connection.on("error", (err) => {
 });
 
 app.use(express.static(path.join(__dirname, "public")));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false}));
 app.get("/", (req, res) => {
   res.render("index");
 });
@@ -42,11 +45,15 @@ app.get("/", (req, res) => {
 
 
 
+app.post("/add-show", myShowController.add)
+app.get("/add-show", (req, res) => {
+  res.render("add-show", {errors:{}});
+})
 
-app.post("/create-taster")
-
-app.get("/tasters", tasterController.list);
-app.get("/tasters/delete/:id", tasterController.delete);
+app.get("/my-shows", myShowController.list);
+app.get("/my-shows/delete/:id", myShowController.delete);
+app.get("/my-shows/edit/:id", myShowController.edit);
+app.post("/my-shows/edit/:id", myShowController.update);
 
 app.get("/tastings", tastingController.list);
 app.get("/tastings/delete/:id", tastingController.delete);
