@@ -8,7 +8,7 @@
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
       <meta name="description" content="" />
-      <title>World Wines</title>
+      <title>Show Tracker: Edit Show</title>
 
       <link
         rel="canonical"
@@ -31,7 +31,7 @@
     <body>
       <%- include('common/header'); -%>
       <div class="container">
-        <h1 class="text-center">Add a New Show</h1>
+        <h1 class="text-center">Edit a Show</h1>
         <div class="row justify-content-md-center">
           <div class="col-">
             <form method="POST"> 
@@ -63,6 +63,16 @@
                 <%} %>
               </div>
               <div class="form-group">
+                <label for="genre">Genre</label>
+                <input
+                  value="<%= show.genre %>"
+                  type="text" 
+                  name="genre" 
+                  class="form-control" 
+                  id="genre" 
+                />
+              </div>
+              <div class="form-group">
                 <label for="progress">Progress</label>
                 <input 
                   value="<%= show.progress %>"
@@ -81,6 +91,9 @@
                   class="form-control" 
                   id="review" 
                 />
+                <% if (errors['review'] ){%>
+                  <p style="color: red"><%= errors['review'].message %></p>
+                <%} %>
               </div>
 
               <button type="submit" class="btn btn-primary">Submit</button>

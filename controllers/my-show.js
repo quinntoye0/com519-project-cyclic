@@ -26,7 +26,7 @@ exports.delete = async (req, res) => {
 exports.add = async (req, res) => {
   
   try {
-    let show = new MyShow({title: req.body.title, synopsis: req.body.synopsis, progress: req.body.progress, review: req.body.review})
+    let show = new MyShow({title: req.body.title, synopsis: req.body.synopsis, genre: req.body.genre, progress: req.body.progress, review: req.body.review})
     await show.save();
     res.redirect(`/my-shows/?message=${req.body.title} has been added`);
   } catch (e) {
@@ -56,7 +56,6 @@ exports.update = async (req, res) => {
     await MyShow.updateOne({_id:id}, req.body);
     const show = await MyShow.findById(id);
     res.redirect(`/my-shows/?message=${show.title} has been updated`);
-
   } catch (e) {
     if (e.errors){
       console.log(e.errors);

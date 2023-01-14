@@ -1,6 +1,25 @@
+body {background-color: rgb(175, 189, 204);}
+
+nav {
+    text-align: center;
+}
+
+.navbar.center .navbar-inner {
+    text-align: center;
+}
+.navbar.center .navbar-inner .nav {
+    float: none;
+    display:inline-block;  /* HERE. IS THIS RIGHT????*/
+    vertical-align: middle;
+}
+
 #home-image {
     height: auto;
     width: 50%;
 
+}
+
+#div-home-image {
+    color: rgb(175, 189, 204);
 }
 
