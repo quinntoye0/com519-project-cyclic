@@ -27,11 +27,9 @@
     <!-- Custom styles for this template 
     <link href="css/album.css" rel="stylesheet" /> -->
   </head>
-  <body>
+  <body style="background-color: rgb(175, 189, 204);">
     <%- include('common/header'); -%>
     <div class="container">
-
-
 
         <% if (message) { %>
 
@@ -48,7 +46,7 @@
         
         <div class="row col-md-12 col-md-offset-2 custyle mx-auto">
         
-        <a href="/add-show?"> <button type="button" class="btn btn-primary">Create a new show</button> </a>
+        <a href="/add-show?"> <button type="button" class="btn btn-info">Create a new show</button> </a>
         <h1 class="mx-auto"> My Shows  </h1>
       
         <table class="table table-striped custab">
@@ -77,8 +75,8 @@
                     <td><%=  show.progress %></td>
                     <td><%=  show.review  %>/10</td>
                     
-                    <td class="text-center"><a href="/my-shows/edit/<%= show._id %>"class='btn btn-info btn-xs'><span class="glyphicon glyphicon-edit"></span> Edit</a> 
-                      <a  href="/my-shows/delete/<%= show._id %>" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+                    <td class="text-center"><a href="/my-shows/edit/<%= show._id %>"class='btn btn-outline-success btn-xs'><span class="glyphicon glyphicon-edit"></span> Edit</a> 
+                      <a  href="/my-shows/delete/<%= show._id %>" class="btn btn-outline-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
                     
                 </tr>
                 

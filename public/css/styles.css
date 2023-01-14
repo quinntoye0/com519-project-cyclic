@@ -1,4 +1,6 @@
-body {background-color: rgb(175, 189, 204);}
+body {
+    background-color: rgb(175, 189, 204);
+}
 
 nav {
     text-align: center;
@@ -15,11 +17,15 @@ nav {
 
 #home-image {
     height: auto;
-    width: 50%;
+    width: 40%;
 
 }
 
 #div-home-image {
+    color: rgb(175, 189, 204);
+}
+
+#edit-body {
     color: rgb(175, 189, 204);
 }
 

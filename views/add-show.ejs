@@ -54,7 +54,8 @@
                   type="text" 
                   name="synopsis" 
                   class="form-control" 
-                  id="synopsis" 
+                  id="synopsis"
+                  placeholder="Enter Synopsis"
                 />
                 <% if (errors['synopsis'] ){%>
                   <p style="color: red"><%= errors['synopsis'].message %></p>
@@ -66,7 +67,8 @@
                   type="text" 
                   name="genre" 
                   class="form-control" 
-                  id="genre" 
+                  id="genre"
+                  placeholder="Enter Genre"
                 />
               </div>
               <div class="form-group">
@@ -76,6 +78,7 @@
                   name="progress" 
                   class="form-control" 
                   id="progress" 
+                  placeholder="Enter Current Progress"
                 />
               </div>
               <div class="form-group">
@@ -84,19 +87,19 @@
                   type="number" 
                   name="review" 
                   class="form-control" 
-                  id="review" 
+                  id="review"
+                  placeholder="Enter Review Out of 10"
                 />
                 <% if (errors['review'] ){%>
                   <p style="color: red"><%= errors['review'].message %></p>
                 <%} %>
               </div>
 
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-info">Submit</button>
             </form>
           </div>
         </div>
       </div>
-      <%- include('common/footer'); -%>
     </body>
   </html>
 </html>
