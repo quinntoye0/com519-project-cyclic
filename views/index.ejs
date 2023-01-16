@@ -54,7 +54,7 @@
       
       
       
-      <section class="jumbotron text-center bg-warning">
+      <section class="jumbotron text-center" style="background-color: #f1e644">
         <div class="container">
           <h1>Track the TV Shows You Love</h1>
           <p class="lead text-muted">Browse, Review and Manage.</p>
@@ -65,11 +65,54 @@
       </section>
       
       
-      <div id="div-home-image">
+      <div id="div-home-secondary-content">
         <div class="row">
-          <picture>
-            <img id="home-image" src="images/crt_bench2.jpg" class="float-left" alt="Photo of a CRT TV" />
-          </picture>
+
+          <!-- homepage image on left -->
+          <div class="left">
+            <img id="home-image-left" src="images/crt_bench2.jpg" alt="Photo of a CRT TV" />
+          </div>          
+          
+          <!-- homepage favourite show interation on the right -->
+          <div class="right">
+            <h3 style="color: Black">Display Your Favourite Show!</h3>
+            <form name="dropForm">
+              <select id="dropSelect" onchange="showDropInfo()">
+                <%
+                  myShows.forEach(show => {
+                %>
+                    <option 
+                      value="<%= show.title %>,<%= show.synopsis %>,<%= show.review %>" 
+                    >
+                      <%= show.title %>
+                    </option>
+                <%  
+                  });
+                %>
+                <option value="P">Select:</option>
+              </select>
+            </form>
+            <br>
+            <h5 style="color: Black" id="pF"></h5>
+
+            <script>
+              function showDropInfo() {
+
+                var vals = document.getElementById('dropSelect').value;
+                var arrayVals = vals.split(",");
+                var headings = '<br><strong>Favourite Show: </strong>,<br><strong>Synopsis: </strong>,<br><strong>Review: </strong>';
+                var arrayHeadings = headings.split(",");
+                var sT='';
+                for(i=0;i<arrayVals.length;i++){
+                  sT = sT + arrayHeadings[i] + arrayVals[i];
+                }
+                sT = sT + '/10';
+                document.getElementById('pF').innerHTML=sT;
+              }
+            </script>
+          </div>
+
+
         </div>
       </div>      
 

@@ -5,10 +5,28 @@ exports.list = async (req, res) => {
     const myShows = await MyShow.find({});
     res.render("my-shows", { myShows: myShows, message:req.query?.message });
   } catch (e) {
-    res.status(404).send({ message: "could not list tasters" });
+    res.status(404).send({ message: "could not list myShows" });
   }
 };
 
+exports.listHome = async (req, res) => {
+  try {
+    const myShows = await MyShow.find({});
+    res.render("index", { myShows: myShows, message:req.query?.message });
+  } catch (e) {
+    res.status(404).send({ message: "could not list myShows" });
+  }
+};
+
+exports.findItem = async (req, res) => {
+
+  try {
+    const show = await MyShow.findById(id);
+    res.render('/', {show: show, id: id, errors: {}});
+  } catch (e) {
+    res.status(404).send({ message: "could not list myShows" });
+  }
+} 
 
 
 exports.delete = async (req, res) => {
