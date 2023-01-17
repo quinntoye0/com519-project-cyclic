@@ -8,31 +8,18 @@
           Home <span class="sr-only">(current)</span>
         </a>
         <a class="nav-link" href="my-shows"> My Shows</a>
-        <a class="nav-link" href="tastings"> Add a Show </a>
-        <a class="nav-link" href="#"> ######## </a>
-        <a class="nav-link" href="#"> ####### </a>
+        <a class="nav-link"></a>
+        <a class="nav-link"></a>
+        <a class="nav-link"></a>
+        <% if(user) { %>
+          <a class="nav-link" href="logout"> <%= user.email %> (Logout) </a> <%
+        }%> 
+        <% if(!user) { %>
+          <a class="nav-link" href="login"> Login </a>
+          <a class="nav-link" href="add-user"> Create Account </a>
+        <% } %>
       </div>
     </div>
   </nav>
-  
-  <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-default center" role="navigation">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="/"> Show Tracker </a>
-    </div>
-    <div class="navbar-inner">
-        <ul class="nav navbar-nav">
-            <li><a class="nav-link active" href="/">
-              Home <span class="sr-only">(current)</span>
-            </a></li>
-            <li></li><a class="nav-link" href="my-shows"> My Shows</a></li>
-            <li></li><a class="nav-link" href="tastings"> Add a Show </a></li>
-            <li></li><a class="nav-link" href="#"> ######## </a></li>
-            <li></li><a class="nav-link" href="#"> ####### </a></li>
-        </ul>
-    </div>
-</nav> -->
-
-
-
 </header>
-;
+<p></p>

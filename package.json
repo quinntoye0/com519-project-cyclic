@@ -13,11 +13,13 @@
     "nodemon": "^2.0.5"
   },
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "body-parser": "^1.20.1",
     "chalk": "^4.1.0",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
+    "express-session": "^1.17.3",
     "loading-cli": "^1.1.0",
     "mongodb": "^3.6.2",
     "mongoose": "^6.8.3"
