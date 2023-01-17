@@ -78,6 +78,7 @@
             <h3 style="color: Black">Display Your Favourite Show!</h3>
             <form name="dropForm">
               <select id="dropSelect" onchange="showDropInfo()">
+                <option disabled selected> -- Select an Option -- </option>
                 <%
                   myShows.forEach(show => {
                 %>
@@ -89,7 +90,6 @@
                 <%  
                   });
                 %>
-                <option value="P">Select:</option>
               </select>
             </form>
             <br>
