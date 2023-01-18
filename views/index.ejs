@@ -75,41 +75,67 @@
           
           <!-- homepage favourite show interation on the right -->
           <div class="right">
-            <h3 style="color: Black">Display Your Favourite Show!</h3>
-            <form name="dropForm">
-              <select id="dropSelect" onchange="showDropInfo()">
-                <option disabled selected> -- Select an Option -- </option>
-                <%
-                  myShows.forEach(show => {
-                %>
-                    <option 
-                      value="<%= show.title %>,<%= show.synopsis %>,<%= show.review %>" 
-                    >
-                      <%= show.title %>
-                    </option>
-                <%  
-                  });
-                %>
-              </select>
-            </form>
-            <br>
-            <h5 style="color: Black" id="pF"></h5>
 
-            <script>
-              function showDropInfo() {
+            <%
+              if(user){
+            %>
+              <h3 style="color: Black">Display Your Favourite Show!</h3>
+              <form name="dropForm">
+                <select id="dropSelect" onchange="showDropInfo()">
+                  <option disabled selected> -- Select an Option -- </option>
+                  <%
+                    myShows.forEach(show => {
+                      currentUserID = user._id;
+                      currentUserIDStr = currentUserID.toString();
+                      showUserID = show.user_id;
+                      showUserIDStr = showUserID.toString();
+                      if (currentUserIDStr == showUserIDStr) {
+                  %>
+                        <option 
+                          value="<%= show.title %>,<%= show.synopsis %>,<%= show.review %>" 
+                        >
+                          <%= show.title %>
+                        </option>
+                  <%  
+                      };
+                    });
+                  %>
+                </select>
+              </form>
+              <br>
+              <h5 style="color: Black" id="pF"></h5>
 
-                var vals = document.getElementById('dropSelect').value;
-                var arrayVals = vals.split(",");
-                var headings = '<br><strong>Favourite Show: </strong>,<br><strong>Synopsis: </strong>,<br><strong>Review: </strong>';
-                var arrayHeadings = headings.split(",");
-                var sT='';
-                for(i=0;i<arrayVals.length;i++){
-                  sT = sT + arrayHeadings[i] + arrayVals[i];
+              <script>
+                function showDropInfo() {
+
+                  var vals = document.getElementById('dropSelect').value;
+                  var arrayVals = vals.split(",");
+                  var headings = '<br><strong>Favourite Show: </strong>,<br><strong>Synopsis: </strong>,<br><strong>Review: </strong>';
+                  var arrayHeadings = headings.split(",");
+                  var sT='';
+                  for(i=0;i<arrayVals.length;i++){
+                    sT = sT + arrayHeadings[i] + arrayVals[i];
+                  }
+                  sT = sT + '/10';
+                  document.getElementById('pF').innerHTML=sT;
                 }
-                sT = sT + '/10';
-                document.getElementById('pF').innerHTML=sT;
-              }
-            </script>
+              </script>
+
+            <%
+              };
+              if(!user){
+            %>
+                <br>
+                <br>
+                <h3 style="color: Black"><strong>Gone are the days where you can't</strong></h3>
+                <h3 style="color: Black"><strong>remember the last show you watched</strong></h3>
+                <br>
+                <h3 style="color: Black"><strong>Gone are the days of</strong></h3>
+                <h3 style="color: Black"><i>"What episode am I on?"</i></h3>
+                <h3 style="color: Black"><i>"Was that show any good?"</i></h3>
+            <%
+              };
+            %>
           </div>
 
 

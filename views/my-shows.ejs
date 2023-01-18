@@ -64,23 +64,31 @@
             <%  
             
               myShows.forEach(show => {
-                
+                console.log("User id is " + user._id + "   show user is " + show.user_id)
+
+                currentUserID = user._id;
+                currentUserIDStr = currentUserID.toString();
+                showUserID = show.user_id;
+                showUserIDStr = showUserID.toString();
+                if (currentUserIDStr == showUserIDStr) {
+                  
             %>
 
-                <tr class="text-dark">
-                    <td><%=  show._id  %></td>
-                    <td><%=  show.title  %></td>
-                    <td><%=  show.synopsis  %></td>
-                    <td><%=  show.genre  %></td>
-                    <td><%=  show.progress %></td>
-                    <td><%=  show.review  %>/10</td>
-                    
-                    <td class="text-center"><a href="/my-shows/edit/<%= show._id %>"class='btn btn-outline-success btn-xs'><span class="glyphicon glyphicon-edit"></span> Edit</a> 
-                      <a  href="/my-shows/delete/<%= show._id %>" class="btn btn-outline-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
-                    
-                </tr>
+                  <tr class="text-dark">
+                      <td><%=  show._id  %></td>
+                      <td><%=  show.title  %></td>
+                      <td><%=  show.synopsis  %></td>
+                      <td><%=  show.genre  %></td>
+                      <td><%=  show.progress %></td>
+                      <td><%=  show.review  %>/10</td>
+                      
+                      <td class="text-center"><a href="/my-shows/edit/<%= show._id %>"class='btn btn-outline-success btn-xs'><span class="glyphicon glyphicon-edit"></span> Edit</a> 
+                        <a  href="/my-shows/delete/<%= show._id %>" class="btn btn-outline-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+                      
+                  </tr>
                 
             <%  
+                };
               });
             %>
 

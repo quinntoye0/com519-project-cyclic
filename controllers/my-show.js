@@ -1,4 +1,5 @@
 const MyShow = require("../models/My-Show");
+const User = require("../models/User");
 
 exports.list = async (req, res) => {
   try {
@@ -44,7 +45,14 @@ exports.delete = async (req, res) => {
 exports.add = async (req, res) => {
   
   try {
-    let show = new MyShow({title: req.body.title, synopsis: req.body.synopsis, genre: req.body.genre, progress: req.body.progress, review: req.body.review})
+    let show = new MyShow({
+      title: req.body.title, 
+      synopsis: req.body.synopsis, 
+      genre: req.body.genre, 
+      progress: req.body.progress, 
+      review: req.body.review, 
+      user_id: req.session.userID
+    })
     await show.save();
     res.redirect(`/my-shows/?message=${req.body.title} has been added`);
   } catch (e) {

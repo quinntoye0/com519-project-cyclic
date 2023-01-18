@@ -58,7 +58,7 @@ const authMiddleware = async (req, res, next) => {
     return res.redirect('/');
   }
   next()
-}
+};
 
 
 app.get("/", myShowController.listHome, (req, res) => {
@@ -102,9 +102,6 @@ app.get("/my-shows", authMiddleware, myShowController.list);
 app.get("/my-shows/delete/:id", authMiddleware, myShowController.delete);
 app.get("/my-shows/edit/:id", authMiddleware, myShowController.edit);
 app.post("/my-shows/edit/:id", authMiddleware, myShowController.update);
-
-// app.get("/tastings", tastingController.list);
-// app.get("/tastings/delete/:id", tastingController.delete);
 
 
 app.listen(WEB_PORT, () => {

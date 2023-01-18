@@ -9,6 +9,10 @@ const myShowsSchema = new Schema(
     progress: String,
     // review vals -1 --> 20, (-1 = no review, 20 = who said reviews had to stop at 10?)
     review: {type: Number, default: 0, min: [-1, 'Review cannot be less than -1 (no review)'], max: [20, 'Review cannot be greater than 20']},
+    user_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
   { timestamps: true }
 );
