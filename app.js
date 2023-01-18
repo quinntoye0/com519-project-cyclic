@@ -86,6 +86,18 @@ app.get("/add-show", (req, res) => {
   res.render("add-show", {errors:{}});
 });
 
+app.get("/my-shows", authMiddleware, myShowController.list, (req, res) => {
+  res.render("my-shows", {errors:{}});
+});
+
+app.get("/my-shows/my-shows", authMiddleware, myShowController.list, (req, res) => {
+  res.render("my-shows", {errors:{}});
+});
+
+app.get("/my-shows/edit/my-shows", authMiddleware, myShowController.list, (req, res) => {
+  res.render("my-shows", {errors:{}});
+});
+
 app.get("/my-shows", authMiddleware, myShowController.list);
 app.get("/my-shows/delete/:id", authMiddleware, myShowController.delete);
 app.get("/my-shows/edit/:id", authMiddleware, myShowController.edit);
