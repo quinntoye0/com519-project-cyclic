@@ -8,6 +8,7 @@
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
       <meta name="description" content="" />
+      <!-- Page title shown on tab -->
       <title>Show Tracker: Edit Show</title>
 
       <link
@@ -28,27 +29,35 @@
       <!-- Custom styles for this template 
       <link href="css/album.css" rel="stylesheet" /> -->
     </head>
+
+    <!-- sets background colour of page -->
     <body style="background-color: rgb(175, 189, 204);">
+      <!-- imports header from common folder -->
       <%- include('common/header'); -%>
       <div class="container">
+        <!-- page title -->
         <h1 class="text-center">Edit a Show</h1>
+        <!-- div to hold form for editing show data -->
         <div class="row justify-content-md-center">
           <div class="col-">
             <form method="POST"> 
               <div class="form-group">
+                <!-- label and input box for editing show title -->                
                 <label for="name">Show Title</label>
+                <!-- pre-populates input box with current data -->
                 <input
                   value="<%= show.title %>"
                   type="text"
                   class="form-control"
                   id="title"
-                  placeholder="Enter Title"
                   name="title"
                 />
+                <!-- if an error message is generated, it is displayed here -->
                 <% if (errors['title'] ){%>
                   <p style="color: red"><%= errors['title'].message %></p>
                 <%} %>
               </div>
+              <!-- all below form elements follow the exact same theory as above, previous comments apply -->
               <div class="form-group">
                 <label for="synopsis">Synopsis</label>
                 <input
@@ -96,6 +105,7 @@
                 <%} %>
               </div>
 
+              <!-- button to submit changes made -->
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
           </div>

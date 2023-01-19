@@ -7,6 +7,7 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <meta name="description" content="" />
+    <!-- Page title shown on tab -->
     <title>Show Tracker: My Shows</title>
 
     <link
@@ -27,30 +28,34 @@
     <!-- Custom styles for this template 
     <link href="css/album.css" rel="stylesheet" /> -->
   </head>
+  <!-- sets background colour of page -->
   <body style="background-color: rgb(175, 189, 204);">
+    <!-- imports header from common folder -->
     <%- include('common/header'); -%>
     <div class="container">
-
+        
+        <!-- if a message is given to the page, the below code displays it -->
         <% if (message) { %>
-
-
-        <div class="row col-md-12 mx-auto">
-          <div class="alert alert-success" role="alert">
-            <%= message %>
+          <!-- displays the message passed in as an alert (x show has been added/updated) -->
+          <div class="row col-md-12 mx-auto">
+            <div class="alert alert-success" role="alert">
+              <%= message %>
+            </div>
           </div>
-        </div>
-
-        <%} %>
-        
-        
+        <%} %>       
         
         <div class="row col-md-12 col-md-offset-2 custyle mx-auto">
         
+        <!-- button to redirect user to form for adding a new show -->
         <a href="/add-show?"> <button type="button" class="btn btn-info">Create a new show</button> </a>
+        
+        <!-- page title -->
         <h1 class="mx-auto"> My Shows  </h1>
       
+        <!-- creates table for data to be displayed -->
         <table class="table table-striped custab">
         <thead>
+            <!-- sets up table collumn headers -->
             <tr>
                 <th>ID</th>
                 <th>Title</th>
@@ -61,19 +66,19 @@
 
             </tr>
 
-            <%  
-            
+            <!-- retrieves id of user logged in -->
+            <!-- sets up loop for total shows in database -->
+            <!-- retrieves id of user that created the current show -->
+            <!-- if the IDs match, the show data is displayed (only display data if it belongs to the logged in user) -->
+            <%
+              currentUserID = user._id;
+              currentUserIDStr = currentUserID.toString();
               myShows.forEach(show => {
-                console.log("User id is " + user._id + "   show user is " + show.user_id)
-
-                currentUserID = user._id;
-                currentUserIDStr = currentUserID.toString();
                 showUserID = show.user_id;
                 showUserIDStr = showUserID.toString();
-                if (currentUserIDStr == showUserIDStr) {
-                  
+                if (currentUserIDStr == showUserIDStr) {                  
             %>
-
+                  <!-- displays show data -->
                   <tr class="text-dark">
                       <td><%=  show._id  %></td>
                       <td><%=  show.title  %></td>
@@ -82,26 +87,18 @@
                       <td><%=  show.progress %></td>
                       <td><%=  show.review  %>/10</td>
                       
+                      <!-- displays buttons for each show to allow user to edit or delete a show -->
                       <td class="text-center"><a href="/my-shows/edit/<%= show._id %>"class='btn btn-outline-success btn-xs'><span class="glyphicon glyphicon-edit"></span> Edit</a> 
-                        <a  href="/my-shows/delete/<%= show._id %>" class="btn btn-outline-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
-                      
-                  </tr>
-                
+                        <a  href="/my-shows/delete/<%= show._id %>" class="btn btn-outline-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>                      
+                  </tr>                
             <%  
                 };
               });
-            %>
-
-
-          
-        </thead>
-              
-      </table>
-
-        
-    </div>
-    
-  
+            %>          
+        </thead>              
+      </table>        
+    </div>    
+    <!-- imports footer from common folder -->
     <%- include('common/footer') -%>
   </body>
 </html>

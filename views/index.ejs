@@ -7,6 +7,7 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <meta name="description" content="" />
+    <!-- Page title shown on tab -->
     <title>Show Tracker: Home</title>
 
     <link
@@ -48,12 +49,12 @@
 
   
   <body>
+    <!-- imports header from common folder -->
     <%- include('common/header'); -%>
 
     <main role="main">
-      
-      
-      
+
+      <!-- main homepage banner -->
       <section class="jumbotron text-center" style="background-color: #f1e644">
         <div class="container">
           <h1>Track the TV Shows You Love</h1>
@@ -64,7 +65,11 @@
         </div>
       </section>
       
-      
+      <!-- div for general homescreen content -->
+      <!-- left div - image -->
+      <!-- right div 
+          - general text if no user logged in 
+          - form to select and display favoutite TV show if there is a user logged in-->
       <div id="div-home-secondary-content">
         <div class="row">
 
@@ -76,13 +81,19 @@
           <!-- homepage favourite show interation on the right -->
           <div class="right">
 
+            <!-- below code runs only if a user is logged in -->
             <%
               if(user){
             %>
+              <!-- heading for favourite show form -->
               <h3 style="color: Black">Display Your Favourite Show!</h3>
               <form name="dropForm">
+                <!-- if any changes are detected in the select field, the fucntion 'showDropInfo' is run -->
                 <select id="dropSelect" onchange="showDropInfo()">
                   <option disabled selected> -- Select an Option -- </option>
+                  <!-- cycles through each show to display in dropdown menu -->
+                  <!-- only displays shows assigned to logged in user -->
+                  <!-- saves values of various IDs as strings to compare to one another -->
                   <%
                     myShows.forEach(show => {
                       currentUserID = user._id;
@@ -91,6 +102,7 @@
                       showUserIDStr = showUserID.toString();
                       if (currentUserIDStr == showUserIDStr) {
                   %>
+                        <!-- displays show for current iteration value, passing extra values in a singular string -->
                         <option 
                           value="<%= show.title %>,<%= show.synopsis %>,<%= show.review %>" 
                         >
@@ -103,28 +115,38 @@
                 </select>
               </form>
               <br>
+              <!-- blank h5 set up to inject code from function if user selects an option -->
               <h5 style="color: Black" id="pF"></h5>
 
-              <script>
+              <script>                
                 function showDropInfo() {
 
+                  // retrieves passed in values from selected option
                   var vals = document.getElementById('dropSelect').value;
+                  // splits the string at each comma and saves each value as its own in a new array
                   var arrayVals = vals.split(",");
+                  // creates an array for each heading using same method as above
                   var headings = '<br><strong>Favourite Show: </strong>,<br><strong>Synopsis: </strong>,<br><strong>Review: </strong>';
                   var arrayHeadings = headings.split(",");
+                  // sets up blank variable to store compiled string
                   var sT='';
+                  // cycles through both arrays adding values to the previous blank variable 'sT' 
                   for(i=0;i<arrayVals.length;i++){
                     sT = sT + arrayHeadings[i] + arrayVals[i];
                   }
+                  // adds '/10' to the end of the string to for the review rating
                   sT = sT + '/10';
+                  // injects compiled string into blank h5 created above function
                   document.getElementById('pF').innerHTML=sT;
                 }
               </script>
 
+            <!-- if no user is logged in, below code is executed -->
             <%
               };
               if(!user){
             %>
+                <!-- information is displayed to user -->
                 <br>
                 <br>
                 <h3 style="color: Black"><strong>Gone are the days where you can't</strong></h3>
@@ -137,13 +159,10 @@
               };
             %>
           </div>
-
-
         </div>
-      </div>      
-
+      </div>
     </main>
-
+    <!-- imports footer from common folder -->
     <%- include('common/footer'); -%>
   </body>
 </html>

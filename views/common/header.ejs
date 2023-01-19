@@ -1,19 +1,30 @@
+<!-- this element is common data which means it is reusable in multiple sections of the website -->
+<!-- this header is positioned at the top of each page and acts as a navigation panel for the user -->
+<!-- links shown vary depending on the status of being logged in -->
+
+
 <header>
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-default center">
+    <!-- main link with title/logo of website, redirects to homepage -->
     <a class="navbar-brand" href="/"> Show Tracker </a>
     <div class="navbar">
       <div class="navbar-nav">
+        <!-- homepage link -->
         <a class="nav-link active" href="/">
           Home <span class="sr-only">(current)</span>
         </a>
+        <!-- link to 'my-shows' page -->
         <a class="nav-link" href="my-shows"> My Shows</a>
+        <!-- blank links to separate pages from user actions (log in/out) -->
         <a class="nav-link"></a>
         <a class="nav-link"></a>
         <a class="nav-link"></a>
+        <!-- if a user is logged in, a logout link is displayed along with the current users email address -->
         <% if(user) { %>
           <a class="nav-link" href="logout"> <%= user.email %> (Logout) </a> <%
         }%> 
+        <!-- if no user is logged in, a link to create a user and one to log in are displayed -->
         <% if(!user) { %>
           <a class="nav-link" href="login"> Login </a>
           <a class="nav-link" href="add-user"> Create Account </a>

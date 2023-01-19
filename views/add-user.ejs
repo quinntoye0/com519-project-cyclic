@@ -8,7 +8,8 @@
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
       <meta name="description" content="" />
-      <title>Show Tracker: Add Show</title>
+      <!-- Page title shown on tab -->
+      <title>Show Tracker: Add User</title>
 
       <link
         rel="canonical"
@@ -29,14 +30,20 @@
       <link href="css/album.css" rel="stylesheet" /> -->
     </head>
     <body>
+      <!-- imports header from common folder -->
       <%- include('common/header'); -%>
       <div class="container">
+        <!-- page title -->
         <h1 class="text-center">Create Account</h1>
+        <!-- div to hold form for adding new show data -->
         <div class="row justify-content-md-center">
           <div class="col-">
+            <!-- on submission of form, data is posted and user is redirected to 'add-user' view -->
             <form method="POST"  action="/add-user">
               <div class="form-group">
+                <!-- label and input box for adding user email address -->
                 <label for="name">Email Address</label>
+                <!-- placeholder data is present in input boxes as an indicator to user -->
                 <input
                   type="text"
                   class="form-control"
@@ -46,16 +53,18 @@
                 />
               </div>
               <div class="form-group">
+                <!-- see comments on above section (identical theory) -->
                 <label for="password">Password</label>
+                <!-- data input type is password - hides values as they are inputted -->
                 <input 
-                  type="text" 
+                  type="password" 
                   name="password" 
                   class="form-control" 
                   id="password"
                   placeholder="Enter Password"
                 />
               </div>
-
+              <!-- button to submit data to attempt user login -->
               <button type="submit" class="btn btn-info">Submit</button>
             </form>
           </div>

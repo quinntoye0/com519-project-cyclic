@@ -8,6 +8,7 @@
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
       <meta name="description" content="" />
+      <!-- Page title shown on tab -->
       <title>Show Tracker: Add Show</title>
 
       <link
@@ -29,14 +30,19 @@
       <link href="css/album.css" rel="stylesheet" /> -->
     </head>
     <body>
+      <!-- imports header from common folder -->
       <%- include('common/header'); -%>
       <div class="container">
+        <!-- page title -->
         <h1 class="text-center">Add a New Show</h1>
+        <!-- div to hold form for adding new show data -->
         <div class="row justify-content-md-center">
           <div class="col-">
             <form method="POST" action="/add-show"> 
               <div class="form-group">
+                <!-- label and input box for adding show title -->                
                 <label for="name">Show Title</label>
+                <!-- placeholder data is present in input boxes as an indicator to user -->
                 <input
                   type="text"
                   class="form-control"
@@ -44,10 +50,12 @@
                   placeholder="Enter Title"
                   name="title"
                 />
+                <!-- if an error message is generated, it is displayed here -->
                 <% if (errors['title'] ){%>
                   <p style="color: red"><%= errors['title'].message %></p>
                 <%} %>
               </div>
+              <!-- all below form elements follow the exact same theory as above, previous comments apply -->
               <div class="form-group">
                 <label for="synopsis">Synopsis</label>
                 <input 
@@ -95,6 +103,7 @@
                 <%} %>
               </div>
 
+              <!-- button to submit new data -->
               <button type="submit" class="btn btn-info">Submit</button>
             </form>
           </div>
