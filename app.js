@@ -110,6 +110,11 @@ app.get("/my-shows/logout", async(req, res) => {
   global.user = false;
   res.redirect('/');
 });
+app.get("/my-shows/edit/logout", async(req, res) => {
+  req.session.destroy();
+  global.user = false;
+  res.redirect('/');
+});
 // various 'my-shows' functions called from  controller when get requests for these pages are sent
 app.get("/my-shows", authMiddleware, myShowController.list);
 app.get("/my-shows/delete/:id", authMiddleware, myShowController.delete);
